@@ -17,4 +17,4 @@ services:
       - "443:443"
       - "50000:50000"
     volumes:
-      - /etc/letsencrypt/live/:/etc/letsencrypt/live/:z
+      - /etc/letsencrypt/:/etc/letsencrypt/:z
