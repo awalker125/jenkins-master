@@ -3,14 +3,14 @@ version: '3'
 services:
   jenkins:
     hostname: 'jenkins'
-    image: localhost:443/aw125/jenkins-master:1.2.3
+    image: localhost:443/aw125/jenkins:1.0
     restart: unless-stopped 
     volumes:
       - /var/jenkins_home:/var/jenkins_home:z
       - /var/run/docker.sock:/var/run/docker.sock
   nginx:
     hostname: 'nginx'
-    image: localhost:443/aw125/lm/lm-tooling-cicd-nginx:1.2.3
+    image: localhost:443/aw125/aw125/nginx:1.0
     restart: unless-stopped    
     ports:
       - "80:80"
