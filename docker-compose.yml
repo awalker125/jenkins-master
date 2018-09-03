@@ -1,14 +1,20 @@
-version: '2'
-
-
+version: '3'
 
 services:
-  jenkins:   
-    build:
-      context: .
+  jenkins:
+    hostname: 'jenkins'
+    image: localhost:443/aw125/jenkins-master:1.2.3
+    restart: unless-stopped 
     volumes:
-      - /var/jenkins_home:/var/jenkins_home
+      - /var/jenkins_home:/var/jenkins_home:z
       - /var/run/docker.sock:/var/run/docker.sock
+  nginx:
+    hostname: 'nginx'
+    image: localhost:443/aw125/lm/lm-tooling-cicd-nginx:1.2.3
+    restart: unless-stopped    
     ports:
-      - "8080:8080"
+      - "80:80"
+      - "443:443"
       - "50000:50000"
+    volumes:
+      - /etc/letsencrypt/live/:/etc/letsencrypt/live/:z
